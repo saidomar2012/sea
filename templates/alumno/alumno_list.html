@@ -15,18 +15,18 @@
 		</tr>
 	</thead>	
 	<tbody>
-		{% if alumnos %}
-		{% for alumnos in alumnos %}
+		{% if object_list %}
+		{% for alumno in object_list %}
 		<tr>
-			<td> {{alumnos.id}} </td>
-			<td> {{alumnos.Identidad}} </td>
-			<td> {{alumnos.nombres}} </td>
-			<td> {{alumnos.apellidos}} </td>
-			<td> {{alumnos.fechaNac}} </td>
-			<td> {{alumnos.sexo}} </td>
+			<td> {{alumno.id}} </td>
+			<td> {{alumno.Identidad}} </td>
+			<td> {{alumno.nombres}} </td>
+			<td> {{alumno.apellidos}} </td>
+			<td> {{alumno.fechaNac}} </td>
+			<td> {{alumno.sexo}} </td>
 			<td>
-				<a class="btn btn-primary" href="{% url 'alumno:alumno_editar' alumnos.id %}">Editar</a>
-				<a class="btn btn-danger" href="{% url 'alumno:alumno_eliminar' alumnos.id %}">Elimnar</a>
+				<a class="btn btn-primary" href="{% url 'alumno:alumno_editar' alumno.id %}">Editar</a>
+				<a class="btn btn-danger" href="{% url 'alumno:alumno_eliminar' alumno.id %}">Elimnar</a>
 			</td>
 		</tr>
 		{%endfor%}

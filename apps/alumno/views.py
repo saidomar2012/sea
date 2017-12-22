@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic import ListView, CreateView
 
 from apps.alumno.forms import AlumnoForm
 from apps.alumno.models import alumno
@@ -41,3 +43,16 @@ def alumno_delete(request, id_alumno):
 		return redirect('alumno:alumno_listar')
 	return render(request, 'alumno/alumno_delete.html',{'alumno':alumno})
 
+
+
+# listas basada es clases
+
+class AlumnoList(ListView):
+	model = alumno
+	template_name ='alumno/alumno_list.html'
+
+class AlumnoCreate(CreateView):
+	model = alumno
+	form_class=AlumnoForm
+	template_name ='alumno/alumnos_form.html'
+	success_url=reverse_lazy('alumno:alumno_listar')
