@@ -1,0 +1,43 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<h1>LISTADO DE ALUMNOS</h1>
+<table class="table table-bordered">
+	<thead>	
+		<tr>
+			<td>#</td>
+			<td>Identidad</td>
+			<td>Nombres</td>
+			<td>Apellidos</td>
+			<td>Fecha de Nacimiento</td>
+			<td>Sexo</td>
+			<td>Acciones</td>
+		</tr>
+	</thead>	
+	<tbody>
+		{% if alumnos %}
+		{% for alumnos in alumnos %}
+		<tr>
+			<td> {{alumnos.id}} </td>
+			<td> {{alumnos.Identidad}} </td>
+			<td> {{alumnos.nombres}} </td>
+			<td> {{alumnos.apellidos}} </td>
+			<td> {{alumnos.fechaNac}} </td>
+			<td> {{alumnos.sexo}} </td>
+			<td>
+				<a class="btn btn-primary" href="{% url 'alumno:alumno_editar' alumnos.id %}">Editar</a>
+				<a class="btn btn-danger" href="{% url 'alumno:alumno_eliminar' alumnos.id %}">Elimnar</a>
+			</td>
+		</tr>
+		{%endfor%}
+		{% else %}
+		<h1>No hay Registros</h1>
+		{% endif %}
+
+
+	</tbody>
+
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,6 @@
+{%extends 'base/base.html'%}
+<title>{% block title %}App Alumno {%endblock%}</title>
+
+	{%block content%}
+		<a class="btn btn-primary" href="{% url 'alumno:alumno_listar'  %}">Editar</a>
+	{%endblock%}
