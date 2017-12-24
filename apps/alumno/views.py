@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.urlresolvers import reverse_lazy
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 from apps.alumno.forms import AlumnoForm
 from apps.alumno.models import alumno
@@ -56,3 +56,15 @@ class AlumnoCreate(CreateView):
 	form_class=AlumnoForm
 	template_name ='alumno/alumnos_form.html'
 	success_url=reverse_lazy('alumno:alumno_listar')
+
+class AlumnoUpdate(UpdateView):
+	model = alumno
+	form_class=AlumnoForm
+	template_name ='alumno/alumnos_form.html'
+	success_url=reverse_lazy('alumno:alumno_listar')
+
+class AlumnoDelete(DeleteView):
+	model = alumno
+	template_name ='alumno/alumno_delete.html'
+	success_url=reverse_lazy('alumno:alumno_listar')
+
